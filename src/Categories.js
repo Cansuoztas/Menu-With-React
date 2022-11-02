@@ -1,22 +1,32 @@
 import React from 'react';
 
-const Categories = ({setCategory}) => {
+const filterButtons = [
+  {
+    text: "All",
+    changeTrigger: "",
+  },
+  {
+    text: "Breakfast",
+    changeTrigger: "breakfast",
+  },
+  {
+    text: "Lunch",
+    changeTrigger: "lunch",
+  },
+  {
+    text: "Shakes",
+    changeTrigger: "shakes",
+  }
+]
+
+export const Categories = ({ setCategory }) => {
   return (
     <div className="btn-container">
-      <button onClick={() => setCategory("")} className="filter-btn">
-        All
-      </button>
-      <button onClick={() => setCategory("breakfast")} className="filter-btn">
-        Breakfast
-      </button>
-      <button onClick={() => setCategory("lunch")} className="filter-btn">
-        Lunch
-      </button>
-      <button onClick={() => setCategory("shakes")} className="filter-btn">
-        Shakes
-      </button>
+      {filterButtons.map((button, i) => (
+        <button key={i + 1} onClick={() => setCategory(button.changeTrigger)} className="filter-btn">
+          {button.text}
+        </button>
+      ))}
     </div>
-  );
-};
-
-export default Categories;
+  )
+}
